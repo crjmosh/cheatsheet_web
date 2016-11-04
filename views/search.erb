@@ -1,0 +1,21 @@
+<h1>Search For Manual Pages</h1>
+
+<hr>
+
+<p><strong>Enter Search Term:</strong></p>
+<form method="post" action="/search">
+	<input type="text" name="query">
+	<input type="submit" value="Search">
+</form>
+
+<a href="/">&lt;&lt; Back</a>
+
+<% if @query %>
+	<hr>
+	<%= `man #{@query}` %>
+	<% @results = `man #{@query}` %>
+<% end %>
+
+<% if @results == '' %>
+		<p> No results found. </p>
+<% end %>
